@@ -9,9 +9,12 @@
 // Every exit is mechanical: a stop loss, a trailing stop once the trade is
 // up, a fade exit when the tape turns, or a hard time limit.
 //
-// Guardrails are built in, not bolted on: every position is a round trip of
-// at least 0.01 SOL, and a tiny probe trade keeps the bot above the
-// 20-coin minimum when momentum entries go quiet.
+// v2 sizing (after the dev grade): the dev window punishes size — the first
+// version lost 3.35 SOL on 0.06 SOL starters, and the kit's own tuned
+// momentum/reversion pilots lost 9.49 / 4.00 SOL. Stakes are halved
+// (0.03 SOL first buy, 0.09 max), entries are stricter, and exits are
+// tighter, so the bot keeps its shot at a runner while bleeding far less
+// on the many coins that fade.
 //
 // Deterministic by construction: no clock, no randomness, iteration only
 // over insertion-ordered maps fed by the batch stream.
@@ -25,30 +28,30 @@ const SOL = 1_000_000_000; // lamports per SOL, as a plain number for tape maths
 const ENTRY_WINDOW_SLOTS = 24;
 const MIN_AGE_SLOTS = 8;
 const MIN_BUYS = 4;
-const MIN_BUYERS = 4;
-const MIN_NET_SOL = 0.8;
-const MIN_PRICE_UP = 0.04;
+const MIN_BUYERS = 5;
+const MIN_NET_SOL = 1.5;
+const MIN_PRICE_UP = 0.06;
 const MAX_PRICE_UP = 1.2;
 const NEAR_HIGH = 0.92;
 const MAX_BUYER_SHARE = 0.45;
 const MIN_REAL_SOL = 0.5;
 const MAX_REAL_SOL = 60;
-const INITIAL_SOL = 0.06;
-const ADD_SOL = 0.06;
-const MAX_STAKE_SOL = 0.18;
+const INITIAL_SOL = 0.03;
+const ADD_SOL = 0.03;
+const MAX_STAKE_SOL = 0.09;
 const ADD_PRICE_STEP = 0.03;
 const BUY_SLIPPAGE_BPS = 5000;
 const SELL_SLIPPAGE_BPS = 10000;
-const STOP_LOSS = 0.25;
-const TRAIL_ARM = 0.30;
-const TRAIL_DROP = 0.18;
-const MAX_HOLD_SLOTS = 600;
+const STOP_LOSS = 0.15;
+const TRAIL_ARM = 0.20;
+const TRAIL_DROP = 0.12;
+const MAX_HOLD_SLOTS = 300;
 const FADE_WINDOW_SLOTS = 24;
-const FADE_NET_SOL = -1.5;
+const FADE_NET_SOL = -0.8;
 const BIG_SELL_SOL = 2;
 const COOLDOWN_SLOTS = 120;
 const MAX_ENTRIES_PER_COIN = 2;
-const MAX_MAIN_POSITIONS = 4;
+const MAX_MAIN_POSITIONS = 3;
 const PROBE_SOL = 0.02;
 const PROBE_AFTER_BATCHES = 1200;
 const PROBE_MIN_COINS = 20;
