@@ -14,11 +14,11 @@ buyers in the last 24 slots, net SOL flowing in, price up 4%+ and holding
 near its window high, with the newer half of the window stronger than the
 older half and no single wallet dominating the buys.
 
-- First buy is small (0.06 SOL); it pyramids in 0.06 SOL adds only while the
-  tape stays strong and the price keeps climbing, up to 0.18 SOL per coin.
-- Exits are mechanical: 25% stop loss, an 18% trailing stop once the trade
-  is up 30%, a fade exit when net SOL turns negative, an exit on any single
-  sell of 2+ SOL, and a 600-slot time limit.
+- First buy is small (0.015 SOL); it pyramids in 0.015 SOL adds only while the
+  tape stays strong and the price keeps climbing, up to 0.045 SOL per coin.
+- Exits are mechanical: 12% stop loss, a 10% trailing stop once the trade
+  is up 15%, a fade exit when net SOL turns negative, an exit on any single
+  sell of 2+ SOL, and a 180-slot time limit.
 - A tiny probe trade keeps the run above the 20-coin guardrail minimum when
   momentum entries go quiet.
 
